@@ -56,8 +56,10 @@ func main() {
 	gatorCommands.register("reset", handlerReset)
 	gatorCommands.register("users", handlerUsers)
 	gatorCommands.register("agg", handlerAgg)
-	gatorCommands.register("addfeed", handlerAddfeed)
+	gatorCommands.register("addfeed", middlewareLoggedIn(handlerAddfeed))
 	gatorCommands.register("feeds", handlerFeeds)
+	gatorCommands.register("follow", middlewareLoggedIn(handlerFollow))
+	gatorCommands.register("following", middlewareLoggedIn(handlerFollowing))
 	cliArgs := os.Args
 	if err != nil {
 		fmt.Println(fmt.Errorf("an error occurred while connecting to the database: %v", err))
