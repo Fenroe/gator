@@ -60,6 +60,7 @@ func main() {
 	gatorCommands.register("feeds", handlerFeeds)
 	gatorCommands.register("follow", middlewareLoggedIn(handlerFollow))
 	gatorCommands.register("following", middlewareLoggedIn(handlerFollowing))
+	gatorCommands.register("unfollow", middlewareLoggedIn(handlerUnfollow))
 	cliArgs := os.Args
 	if err != nil {
 		fmt.Println(fmt.Errorf("an error occurred while connecting to the database: %v", err))
